@@ -19,11 +19,32 @@ class App extends Component {
 
   handlePlusMinus = (e) => {
     e.preventDefault()
-    let display = -1 * this.state.display
-    if (isNaN(display)) {
-      display = 'Error'
+    const display = this.state.display
+    let result
+
+    if (isNaN(Number(display))) {
+      // if the display is not a number, it will return NaN
+      result = 'Error'
+    } else {
+      result = -1 * display
     }
-    this.setState({ display })
+
+    this.setState({ display: result })
+  }
+
+  handlePercentage = (e) => {
+    e.preventDefault()
+    const display = this.state.display
+    let result
+
+    if (isNaN(Number(display))) {
+      // if the display is not a number, it will return NaN
+      result = 'Error'
+    } else {
+      result = display / 100
+    }
+
+    this.setState({ display: result })
   }
 
   handleInput = (e) => {
@@ -60,8 +81,10 @@ class App extends Component {
 
           <button onClick={this.handleClear}>C</button>
           <button onClick={this.handlePlusMinus}>+/-</button>
-          <button onClick={this.handlePlusMinus}>%</button>
-          <button className='operator'>÷</button>
+          <button onClick={this.handlePercentage}>%</button>
+          <button value=' / ' onClick={this.handleInput} className='operator'>
+            ÷
+          </button>
 
           <div id='number-area'>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
@@ -71,12 +94,18 @@ class App extends Component {
             ))}
           </div>
 
-          <button className='operator'>x</button>
-          <button className='operator'>-</button>
+          <button value=' * ' onClick={this.handleInput} className='operator'>
+            x
+          </button>
+          <button value=' - ' onClick={this.handleInput} className='operator'>
+            -
+          </button>
           <button value=' + ' onClick={this.handleInput} className='operator'>
             +
           </button>
-          <button id='zero'>0</button>
+          <button value='0' onClick={this.handleInput} id='zero'>
+            0
+          </button>
           <button>.</button>
           <button onClick={this.handleCalculate} id='calculate'>
             =
