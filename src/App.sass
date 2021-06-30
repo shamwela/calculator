@@ -1,0 +1,28 @@
+@import "./styles/variables"
+
+#app
+  width: 100%
+  min-height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+
+#app  *
+  border-radius: $border-radius
+
+#calculator
+  width: 80%
+  min-height: 50vh
+  background-color: $secondary-color
+  padding: 1rem
+  display: grid
+  grid-template-columns: auto auto auto
+
+#display
+  width: $display-width
+  height: $button-width
+
+button
+  width: $button-width
+  height: $button-width
+  background-color: $dominant-color
