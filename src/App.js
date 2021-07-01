@@ -59,7 +59,7 @@ class App extends Component {
     const display = this.state.display
     let result
     try {
-      result = eval(display)
+      result = eval(display.replace(/÷/g, '/').replace(/×/g, '*'))
     } catch (error) {
       result = 'Error'
     }
@@ -82,7 +82,7 @@ class App extends Component {
           <button onClick={this.handleClear}>C</button>
           <button onClick={this.handlePlusMinus}>+/-</button>
           <button onClick={this.handlePercentage}>%</button>
-          <button value=' / ' onClick={this.handleInput} className='operator'>
+          <button value=' ÷ ' onClick={this.handleInput} className='operator'>
             ÷
           </button>
 
@@ -94,8 +94,8 @@ class App extends Component {
             ))}
           </div>
 
-          <button value=' * ' onClick={this.handleInput} className='operator'>
-            x
+          <button value=' × ' onClick={this.handleInput} className='operator'>
+            ×
           </button>
           <button value=' - ' onClick={this.handleInput} className='operator'>
             -
