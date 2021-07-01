@@ -87,7 +87,8 @@ class App extends Component {
           </button>
 
           <div id='number-area'>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
+            {/* used this number order to improve UX */}
+            {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((number) => (
               <button value={number} onClick={this.handleInput} key={number}>
                 {number}
               </button>
