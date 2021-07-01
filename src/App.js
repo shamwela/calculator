@@ -79,9 +79,15 @@ class App extends Component {
             id='display'
           />
 
-          <button onClick={this.handleClear}>C</button>
-          <button onClick={this.handlePlusMinus}>+/-</button>
-          <button onClick={this.handlePercentage}>%</button>
+          <button onClick={this.handleClear} className='misc'>
+            C
+          </button>
+          <button onClick={this.handlePlusMinus} className='misc'>
+            +/-
+          </button>
+          <button onClick={this.handlePercentage} className='misc'>
+            %
+          </button>
           <button value=' ÷ ' onClick={this.handleInput} className='operator'>
             ÷
           </button>
@@ -89,7 +95,12 @@ class App extends Component {
           <div id='number-area'>
             {/* used this number order to improve UX */}
             {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((number) => (
-              <button value={number} onClick={this.handleInput} key={number}>
+              <button
+                value={number}
+                onClick={this.handleInput}
+                key={number}
+                className='digit'
+              >
                 {number}
               </button>
             ))}
@@ -104,10 +115,15 @@ class App extends Component {
           <button value=' + ' onClick={this.handleInput} className='operator'>
             +
           </button>
-          <button value='0' onClick={this.handleInput} id='zero'>
+          <button
+            value='0'
+            onClick={this.handleInput}
+            id='zero'
+            className='digit'
+          >
             0
           </button>
-          <button value='.' onClick={this.handleInput}>
+          <button value='.' onClick={this.handleInput} className='digit'>
             .
           </button>
           <button onClick={this.handleCalculate} id='calculate'>
