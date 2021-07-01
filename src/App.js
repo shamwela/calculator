@@ -6,6 +6,10 @@ class App extends Component {
     display: '',
   }
 
+  displayError = () => {
+    this.setState({ display: 'Error' })
+  }
+
   handleChange = (e) => {
     e.preventDefault()
     const display = e.currentTarget.value
@@ -20,50 +24,46 @@ class App extends Component {
   handlePlusMinus = (e) => {
     e.preventDefault()
     const display = this.state.display
-    let result
 
     if (isNaN(Number(display))) {
       // if the display is not a number, it will return NaN
-      result = 'Error'
+      this.displayError()
     } else {
-      result = -1 * display
+      const result = -1 * display
+      this.setState({ display: result })
     }
-
-    this.setState({ display: result })
   }
 
   handlePercentage = (e) => {
     e.preventDefault()
     const display = this.state.display
-    let result
 
     if (isNaN(Number(display))) {
       // if the display is not a number, it will return NaN
-      result = 'Error'
+      this.displayError()
     } else {
-      result = display / 100
+      const result = display / 100
+      this.setState({ display: result })
     }
-
-    this.setState({ display: result })
   }
 
   handleInput = (e) => {
     e.preventDefault()
-    let display = this.state.display
-    display = display += e.currentTarget.value
+    const previousDisplay = this.state.display
+    const newCharacter = e.currentTarget.value
+    const display = previousDisplay + newCharacter
     this.setState({ display })
   }
 
   handleCalculate = (e) => {
     e.preventDefault()
     const display = this.state.display
-    let result
     try {
-      result = eval(display.replace(/÷/g, '/').replace(/×/g, '*'))
+      const result = eval(display.replace(/÷/g, '/').replace(/×/g, '*'))
+      this.setState({ display: result })
     } catch (error) {
-      result = 'Error'
+      this.displayError()
     }
-    this.setState({ display: result })
   }
 
   render() {
