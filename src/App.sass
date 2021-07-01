@@ -20,12 +20,18 @@ button
   display: grid
   grid-template: repeat(6, 1fr) / repeat(4, 1fr)
   grid-gap: $grid-gap
+  & button
+    border: 0
 
 #display
   grid-column: 1 / 5
+  border: 0
   padding: 2vw
+  background-color: transparent
+  font-size: 2 * $main-font-size
   text-align: right
-  color: $dominant-color
+  &:focus
+    outline: none
 
 .operator,
 #calculate
