@@ -106,7 +106,9 @@ class App extends Component {
           <button value='0' onClick={this.handleInput} id='zero'>
             0
           </button>
-          <button>.</button>
+          <button value='.' onClick={this.handleInput}>
+            .
+          </button>
           <button onClick={this.handleCalculate} id='calculate'>
             =
           </button>
