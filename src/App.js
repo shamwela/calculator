@@ -7,7 +7,7 @@ class App extends Component {
   }
 
   displayError = () => {
-    this.setState({ display: 'Error' })
+    this.setState({ display: 'Error!' })
   }
 
   handleChange = (e) => {
@@ -58,6 +58,7 @@ class App extends Component {
   handleCalculate = (e) => {
     e.preventDefault()
     const display = this.state.display
+
     try {
       const result = eval(display.replace(/÷/g, '/').replace(/×/g, '*'))
       this.setState({ display: result })
@@ -70,7 +71,7 @@ class App extends Component {
     const { display } = this.state
 
     return (
-      <div id='app'>
+      <div id='container'>
         <div id='calculator'>
           <input
             value={display}
