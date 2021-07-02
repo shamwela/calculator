@@ -9,20 +9,21 @@
 #calculator
   width: 100%
   height: 70vh
-  padding: $grid-gap
+  padding: $grid-gap // padding and grid-gap should be the same to look nice
   display: grid
   grid-template: repeat(6, 1fr) / repeat(4, 1fr)
   grid-gap: $grid-gap
 
 #display
-  grid-column: 1 / 5
   border: 0
   padding: 2vw
+  grid-column: 1 / -1
   background-color: transparent
   text-align: right
   &:focus
     outline: none
 
+// On hover, will increase the lightness of the buttons' background color by 10%
 .misc
   background-color: hsl(60, 2%, 83%) // light gray
   color: #000
@@ -35,17 +36,16 @@
   &:hover
     background-color: hsl(219, 88%, 65%)
 
-.digit
+.number
   background-color: hsl(0, 0%, 11%) // dark gray
   &:hover
     background-color: hsl(0, 0%, 21%)
 
-#number-area
-  grid-row: 3 / span 3
-  grid-column: 1 / span 3
+#number-container
+  grid-area: 3 / 1 / span 4 / span 3
   display: grid
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr)
-  grid-gap: $grid-gap
+  grid-template: repeat(4, 1fr) / repeat(3, 1fr)
+  grid-gap: $grid-gap // this grid-gap should be the same as parent's grid-gap to look nice
 
 #zero
   grid-column: 1 / span 2

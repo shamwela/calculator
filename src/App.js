@@ -99,14 +99,15 @@ class App extends Component {
             ÷
           </button>
 
-          <div id='number-area'>
+          <div id='number-container'>
             {/* used this number order to improve UX */}
-            {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((number) => (
+            {[7, 8, 9, 4, 5, 6, 1, 2, 3, 0, '.'].map((number) => (
               <button
                 value={number}
                 onClick={this.handleInput}
                 key={number}
-                className='digit'
+                id={number === 0 ? 'zero' : null}
+                className='number'
               >
                 {number}
               </button>
@@ -116,23 +117,15 @@ class App extends Component {
           <button value=' × ' onClick={this.handleInput} className='operator'>
             ×
           </button>
+
           <button value=' - ' onClick={this.handleInput} className='operator'>
             -
           </button>
+
           <button value=' + ' onClick={this.handleInput} className='operator'>
             +
           </button>
-          <button
-            value='0'
-            onClick={this.handleInput}
-            id='zero'
-            className='digit'
-          >
-            0
-          </button>
-          <button value='.' onClick={this.handleInput} className='digit'>
-            .
-          </button>
+
           <button onClick={this.handleCalculate} id='calculate'>
             =
           </button>
