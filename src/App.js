@@ -84,6 +84,7 @@ class App extends Component {
             onChange={this.handleChange}
             type='text'
             id='display'
+            aria-label='Display'
           />
 
           <button onClick={this.handleClear} className='misc'>
