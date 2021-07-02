@@ -7,7 +7,7 @@ class App extends Component {
   }
 
   displayError = () => {
-    this.setState({ display: 'Error!' })
+    this.setState({ display: 'Error' })
   }
 
   handleChange = (e) => {
@@ -61,6 +61,12 @@ class App extends Component {
 
     try {
       const result = eval(display.replace(/÷/g, '/').replace(/×/g, '*'))
+
+      // because dividing by zero results in Infinity
+      if (!isFinite(result)) {
+        throw new Error()
+      }
+
       this.setState({ display: result })
     } catch (error) {
       this.displayError()
