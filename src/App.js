@@ -21,17 +21,13 @@ class App extends Component {
     this.setState({ display: '' })
   }
 
-  handlePlusMinus = (e) => {
+  handleDelete = (e) => {
     e.preventDefault()
-    const display = this.state.display
 
-    if (isNaN(Number(display))) {
-      // if the display is not a number, it will return NaN
-      this.displayError()
-    } else {
-      const result = -1 * display
-      this.setState({ display: result })
-    }
+    // since the operators put white spaces around them, we need to trim
+    const display = this.state.display.trim().slice(0, -1).trim()
+
+    this.setState({ display })
   }
 
   handlePercentage = (e) => {
@@ -90,8 +86,8 @@ class App extends Component {
           <button onClick={this.handleClear} className='misc'>
             C
           </button>
-          <button onClick={this.handlePlusMinus} className='misc'>
-            +/-
+          <button onClick={this.handleDelete} className='misc'>
+            D
           </button>
           <button onClick={this.handlePercentage} className='misc'>
             %
