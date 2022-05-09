@@ -4,10 +4,6 @@ import './App.sass'
 const App = () => {
   const [display, setDisplay] = useState('')
 
-  const displayError = () => {
-    setDisplay('Error')
-  }
-
   const handleChange = (e) => {
     e.preventDefault()
     const display = e.target.value
@@ -29,7 +25,7 @@ const App = () => {
     e.preventDefault()
     if (isNaN(Number(display))) {
       // if the display is not a number, it will return NaN
-      displayError()
+      setDisplay('Error')
     } else {
       const result = display / 100
       setDisplay(result)
@@ -44,21 +40,19 @@ const App = () => {
     setDisplay(newDisplay)
   }
 
-  const handleCalculate = (e) => {
-    e.preventDefault()
-
+  const handleCalculate = () => {
     try {
       // eslint-disable-next-line no-eval
       const result = eval(display.replace(/÷/g, '/').replace(/×/g, '*'))
 
       // because dividing by zero results in Infinity
       if (!isFinite(result)) {
-        throw new Error()
+        setDisplay('Error')
       }
 
       setDisplay(result)
     } catch (error) {
-      displayError()
+      setDisplay('Error')
     }
   }
 
